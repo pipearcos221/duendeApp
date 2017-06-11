@@ -6,7 +6,7 @@
       <ion-img class="duende-title"></ion-img>
       </ion-col>
       
-    </ion-title>
+    </ion-title> 
   </ion-navbar>
 
 </ion-header>
@@ -14,8 +14,8 @@
 <ion-content padding class="bg">
 
 <ion-col col-12 col-md-6 col-lg-4>
-    <form #form="ngForm">
-      <div *ngFor="let l of formulario">
+    <form class="item-bg" #form="ngForm">
+      <div class="item-bg" *ngFor="let l of formulario">
 
         <ion-item class="item-bg" *ngIf="l.type == 'text'">
           <ion-label  floating> {{l.label}}</ion-label>
@@ -70,11 +70,9 @@
       </div>
     </form>
   </ion-col>
-
-  
+ 
   <ion-fab right bottom (click)="refresh()" padding>
   <button ion-fab icon-only color="danger"> <ion-icon name="md-refresh"></ion-icon> </button>
   </ion-fab>
   
-
 </ion-content>
