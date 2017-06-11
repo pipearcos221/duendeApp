@@ -1,20 +1,79 @@
 <ion-header>
 
-  <ion-navbar color="secondary">
+  <ion-navbar color="navbar-bg">
     <ion-title>
-      Duende
+      <ion-col>
+      <ion-img class="duende-title"></ion-img>
+      </ion-col>
+      
     </ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="bg">
 
-  <h5>
-    AÑAÑAI
-  </h5>
-  <p>
-    {{typ}}
-  </p>
-  
+<ion-col col-12 col-md-6 col-lg-4>
+    <form #form="ngForm">
+      <div *ngFor="let l of formulario">
+
+        <ion-item class="item-bg" *ngIf="l.type == 'text'">
+          <ion-label  floating> {{l.label}}</ion-label>
+          <ion-input name="l.name" type="text" required></ion-input>
+        </ion-item>
+
+        <ion-item class="item-bg" *ngIf="l.type == 'textarea'">
+          <ion-label floating>{{l.label}}</ion-label>
+          <ion-textarea name="l.name" required></ion-textarea>
+        </ion-item>
+
+        <ion-item class="item-bg" *ngIf="l.type == 'time'">
+          <ion-label floating>{{l.label}}</ion-label>
+          <ion-input name="l.name" type="Time" required></ion-input>
+        </ion-item>
+
+        <ion-item class="item-bg" *ngIf="l.type == 'date'">
+          <ion-label floating>{{l.label}}</ion-label>
+          <ion-input name="l.name" type="Date" required></ion-input>
+        </ion-item>
+
+        <ion-item class="item-bg" *ngIf="l.type == 'select'">
+          <ion-label> {{l.label}} </ion-label>
+          <ion-select ion-input required>
+            <div *ngFor="let m of l.values">
+              <ion-option value="{{m}}"> {{m}} </ion-option>
+            </div>
+          </ion-select>
+        </ion-item>
+
+        <ion-list class="item-bg" radio-group *ngIf="l.type == 'radio'">
+          <ion-list-header class="item-bg">
+            {{l.label}}
+          </ion-list-header>
+
+          <ion-item class="item-bg" *ngFor="let m of l.values">
+            <ion-label>{{m}}</ion-label>
+            <ion-radio name="l.name" value="{{m}}"></ion-radio>
+          </ion-item>
+        </ion-list>
+
+        <ion-list class="item-bg" *ngIf="l.type == 'checkbox'">
+          <ion-list-header class="item-bg">
+            {{l.label}}
+          </ion-list-header>
+          <ion-item class="item-bg" *ngFor="let m of l.values">
+            <ion-label>{{m}}</ion-label>
+            <ion-checkbox name="l.name"></ion-checkbox>
+          </ion-item>
+        </ion-list>
+
+      </div>
+    </form>
+
+     <ion-fab bottom right (click)="refresh()">
+     <button ion-fab icon-only color="danger"> <ion-icon name="md-refresh"></ion-icon> </button>
+     </ion-fab>
+
+  </ion-col>
+
 </ion-content>

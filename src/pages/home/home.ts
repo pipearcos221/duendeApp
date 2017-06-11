@@ -8,12 +8,7 @@ import { DuendeData } from '../../providers/duende-data';
 })
 export class HomePage {
 
-  typ : String[];
-  lab : String[];
-  nam : String[];
-  req : Boolean[];
-  val : String[];
-
+  formulario : any;
 
   constructor(public navCtrl: NavController, client: DuendeData) {
     client.get().subscribe(datos => this.loadDatos(datos, null)
@@ -27,13 +22,14 @@ export class HomePage {
       return;
     }
 
-    this.typ = datos.typ;
-    this.lab = datos.lab;
-    this.nam = datos.nam;
-    this.req = datos.req;
-    this.val = datos.val;
-
+    this.formulario = datos;
   }
-  
+
+  refresh() {
+    
+    this.navCtrl.setRoot(HomePage);
+  }
+
+
 
 }

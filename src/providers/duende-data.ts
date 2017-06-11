@@ -26,32 +26,12 @@ export class DuendeData {
   }
 
   private processResponse(response:Response){
-
-    let typ : String[];
-    let lab : String[];
-    let nam : String[];
-    let req : Boolean[];
-    let val : String[];
-
+    
     let body = response.json();
 
     console.log(body);
-
-    for (var i = 0; i < body.length; i++){
-
-      typ.push(body[i].type);      
-      lab.push(body[i].label);
-      nam.push(body[i].name);
-      req.push(body[i].required);
-      val.push(body[i].values);
-
-    }
-
-      
     
-
-    let datos = [typ, lab, nam, req, val];
-    console.log(datos);
+    let datos = body;
     return datos;
 
   }
